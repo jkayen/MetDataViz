@@ -72,6 +72,7 @@ const allDepartments = data => {
   })
   return deptObj;
 }
+
 // convert deptObj in an array with name & value keys
 const deptArr = coll => {
   let deptArr = [];

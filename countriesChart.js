@@ -32,7 +32,6 @@ const paletteScale = d3.scale.linear()
 
 
 
-
 // analyze db for countries
 d3.csv('MetObjects.csv', data => {
   // get artifacts by country
@@ -44,7 +43,7 @@ d3.csv('MetObjects.csv', data => {
   })
 
   map.updateChoropleth(dataset)
-  // console.log(dataset)
 
 
+  console.log('all done!')
 })
