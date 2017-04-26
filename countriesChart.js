@@ -24,10 +24,10 @@ const map = new Datamap({
   }
 });
 // show legend with colors
-map.legend();
+// map.legend();
 // create color scale
 const paletteScale = d3.scale.linear()
-      .domain([1, 10000])
+      .domain([1, 2000])
       .range([few, many])
 
 

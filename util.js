@@ -20,6 +20,20 @@ const getArtifactsByYear = data => {
   return yearsArr;
 }
 
+// return the year that has the most artifacts
+const abundantYear = data => {
+  data = getArtifactsByYear(data)
+  let year;
+  let amt = 100;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].num > amt) {
+      year = data[i].year;
+      amt = data[i].num
+    }
+  }
+  return {year, amt}
+}
+
 // find number of gold objects in the collection
 const howMuchGold = data => {
   let iLoveGold = 0;
