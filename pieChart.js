@@ -3,7 +3,9 @@ const svg = d3.select(".pie"),
       height4 = +svg.attr("height"),
       radius = Math.min(width4, height4) / 2,
       g = svg.append("g").attr('transform', `translate(${width4 / 2},${height4 / 2})`),
-      color = d3.scale.ordinal(d3.schemeCategory20c),
+      color = d3.scale.linear()
+        .domain([0, 150000])
+        .range(["#e2b7ff", "#7b00ce"]),
       pie = d3.layout.pie()
         .sort(null)
         .value(d => d.value),
