@@ -2,10 +2,10 @@
 const margin = {top: 0, right: 0, bottom: 200, left: 50},
       width = 960 - margin.left - margin.right,
       height = 800 - margin.top - margin.bottom;
-// establish an x axis that scales the width of the chart
+// establish an x range that scales the width of the chart
 let x2 = d3.scale.ordinal()
     .rangeRoundBands([0, width], .1);
-// establish ay axis that scales the height of the chart
+// establish a y range that scales the height of the chart
 let y2 = d3.scale.linear()
     .range([height, 0]);
 // create xAxis that runs the length of x2 on the bottom
@@ -16,7 +16,7 @@ const xAxis = d3.svg.axis()
 const yAxis = d3.svg.axis()
       .scale(y2)
       .orient("left")
-      // how to make ticks be out of 100%?
+
 // create a chart with the given overall width and height of 960 x 500
 const chart = d3.select(".svgChart")
       .attr("width", width + margin.left + margin.right)
@@ -41,10 +41,13 @@ d3.csv("MetObjects.csv", convertStringToNumber, (error, data) => {
       .attr("class", "y axis")
       .call(yAxis)
     .append("text")
+    // rotate labels 90 deg
       .attr("transform", "rotate(-90)")
+    // shift the position
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
+    // set the axis title
       .text("Number of Artifacts");
   // create bars for each piece of data
   chart.selectAll(".bar")
@@ -56,10 +59,8 @@ d3.csv("MetObjects.csv", convertStringToNumber, (error, data) => {
       .attr("y", d => y2(d.value))
       .attr("height", d => height - y2(d.value))
       .attr("width", x2.rangeBand())
-
+  // position x axis labels
   chart.selectAll("g .x .tick text")
       .attr("transform", "rotate(-60)")
       .style("text-anchor", "end")
-
 });
-
