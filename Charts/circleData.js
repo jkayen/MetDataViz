@@ -1,14 +1,14 @@
-const numbers = [60, 60, 60]
+const numbers = new Array(~~(Math.random() * 10))
 
 const selection = d3.select('.circle')
-  .attr('height', 120)
+  .attr('height', 720)
   .attr('width', 720)
 
-function update() {
+const update = () => {
   selection.selectAll('circle').remove()
   selection.selectAll('.circle').data(numbers)
     .enter().append('circle')
-      .attr('cy', d => d)
+      .attr('cy', d => Math.random() * 720)
       .style('fill', 'steelblue')
       .attr('cx', () => Math.random() * 720)
       .attr('r', () => Math.random() * 60)
@@ -16,4 +16,3 @@ function update() {
 
 setInterval(update, 1000)
 
-// update()
